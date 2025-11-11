@@ -10,6 +10,8 @@ from .database import SessionLocal, engine, get_db
 
 app = FastAPI(title="AI Blog API", version="1.0.0")
 
+
+
 # SOLUCIÓN CORS COMPLETA
 app.add_middleware(
     CORSMiddleware,
@@ -19,8 +21,12 @@ app.add_middleware(
     allow_headers=["*"],  # Permite todos los headers
 )
 
-# CREAR TABLAS - DESCOMENTA ESTA LÍNEA
-models.Base.metadata.create_all(bind=engine)
+print("Creando tablas en la base de datos...")
+try:
+    models.Base.metadata.create_all(bind=engine)
+    print("¡Tablas creadas exitosamente!")
+except Exception as e:
+    print(f"Error creando tablas: {e}")
 
 # El resto de tu código se mantiene igual...
 class GeneratePostRequest(BaseModel):
