@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 // URL de tu backend (cambiar por la de Render después)
-const API_BASE = "http://localhost:8000";
+const API_BASE = "https://proyectobackend-26se.onrender.com";
 
 function App() {
   const [currentView, setCurrentView] = useState('login');
