@@ -14,6 +14,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copiar el código de la aplicación
 COPY . .
 
+# Crear tablas al iniciar
+RUN python create_tables.py
+
 # Exponer el puerto
 EXPOSE 10000
 
