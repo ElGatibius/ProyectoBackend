@@ -11,10 +11,13 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar el código de la aplicación
+# Copiar el código de la aplicación (incluyendo create_tables.py)
 COPY . .
 
-# Crear tablas al iniciar
+# Verificar que los archivos se copiaron correctamente
+RUN ls -la
+
+# Crear tablas al construir la imagen
 RUN python create_tables.py
 
 # Exponer el puerto
