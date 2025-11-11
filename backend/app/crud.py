@@ -19,3 +19,24 @@ def authenticate_user(db: Session, email: str, password: str):
     if not auth.verify_password(password, user.hashed_password):
         return False
     return user
+
+# ... (código anterior se mantiene)
+
+# Funciones para BlogPosts
+def create_blog_post(db: Session, post: schemas.BlogPostCreate, author_id: int):
+    db_post = models.BlogPost(
+        title=post.title,
+        content=post.content,
+        seo_keywords=post.seo_keywords,
+        author_id=author_id
+    )
+    db.add(db_post)
+    db.commit()
+    db.refresh(db_post)
+    return db_post
+
+def get_blog_posts(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.BlogPost).offset(skip).limit(limit).all()
+
+def get_blog_post(db: Session, post_id: int):
+    return db.query(models.BlogPost).filter(models.BlogPost.id == post_id).first()
