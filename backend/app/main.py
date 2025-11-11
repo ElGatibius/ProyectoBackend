@@ -18,7 +18,8 @@ app.add_middleware(
         frontend_url,
         "http://localhost:5173", 
         "http://127.0.0.1:5173",
-        "https://tuusuario.github.io"  # Reemplaza con tu usuario de GitHub
+        "https://elgatibius.github.io",
+        "https://elgatibius.github.io/ProyectoBackend",  # Reemplaza con tu usuario de GitHub
     ],
     allow_credentials=True,
     allow_methods=["*"],
